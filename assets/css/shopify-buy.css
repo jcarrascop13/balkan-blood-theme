@@ -1,0 +1,284 @@
+/**
+ * Balkan Blood — Shopify Buy Button overrides.
+ *
+ * El widget de Shopify inyecta sus propios estilos en línea, por eso
+ * estas reglas usan !important: es la única forma soportada de
+ * sobreescribirlos para que combinen con el diseño del sitio.
+ *
+ * En el tema original estas reglas para los <select> de variantes
+ * estaban repetidas (y ligeramente contradichas) en tres bloques
+ * distintos del archivo. Aquí quedan consolidadas en un solo lugar.
+ */
+
+/* ===== TARJETA DE PRODUCTO ===== */
+
+.shopify-buy__product {
+	position: relative;
+
+	display: flex !important;
+	flex-direction: column !important;
+	height: auto !important;
+
+	background: transparent !important;
+	padding: 0 !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+.shopify-buy__product form {
+	margin: 0 !important;
+}
+
+.shopify-buy__layout-vertical {
+	width: 100% !important;
+}
+
+.shopify-buy__product-img-wrapper {
+	position: relative;
+	overflow: hidden;
+	background: #090909;
+}
+
+.shopify-buy__product-img-wrapper::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.12));
+	opacity: 0;
+
+	transition: opacity 0.6s ease;
+	pointer-events: none;
+}
+
+.shopify-buy__product-img {
+	width: 100% !important;
+	aspect-ratio: 4 / 5;
+	display: block;
+	object-fit: cover;
+
+	filter: brightness(0.96);
+	transition: transform 1s ease, filter 1s ease !important;
+}
+
+.shopify-buy__product:hover .shopify-buy__product-img {
+	transform: scale(1.035);
+	filter: brightness(1);
+}
+
+.shopify-buy__product:hover .shopify-buy__product-img-wrapper::after {
+	opacity: 1;
+}
+
+.shopify-buy__product__title {
+	margin-top: 22px !important;
+	margin-bottom: 10px !important;
+
+	font-family: "Inter", sans-serif !important;
+	font-size: 12px !important;
+	font-weight: 500 !important;
+	letter-spacing: 2.5px !important;
+	line-height: 1.6 !important;
+	text-transform: uppercase !important;
+	color: #ffffff !important;
+}
+
+.shopify-buy__product__price {
+	display: block !important;
+
+	margin-top: 0 !important;
+	margin-bottom: 24px !important;
+
+	font-family: "Inter", sans-serif !important;
+	font-size: 12px !important;
+	font-weight: 400 !important;
+	letter-spacing: 1px !important;
+	color: rgba(255, 255, 255, 0.42) !important;
+}
+
+/* ===== SELECTOR DE VARIANTES ===== */
+
+.shopify-buy__product__variant-selectors {
+	clear: both !important;
+	margin: 18px 0 20px !important;
+
+	display: flex !important;
+	flex-direction: column !important;
+	gap: 14px !important;
+}
+
+.shopify-buy__option {
+	background: transparent !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.shopify-buy__option + .shopify-buy__option {
+	margin-top: 14px !important;
+}
+
+.shopify-buy__option-select,
+.shopify-buy__option-select-wrapper {
+	position: relative !important;
+	background: transparent !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.shopify-buy__option__label {
+	display: block !important;
+	margin-bottom: 10px !important;
+
+	font-family: "Inter", sans-serif !important;
+	font-size: 10px !important;
+	font-weight: 600 !important;
+	letter-spacing: 3px !important;
+	text-transform: uppercase !important;
+	color: rgba(255, 255, 255, 0.38) !important;
+}
+
+.shopify-buy__option-select__select,
+.product-card select,
+.shopify-buy__option-select-wrapper select {
+	width: 100% !important;
+	height: 54px !important;
+	padding: 0 18px !important;
+	margin: 0 !important;
+
+	appearance: none !important;
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+
+	background: rgba(255, 255, 255, 0.03) !important;
+	background-image: none !important;
+	border: 1px solid rgba(255, 255, 255, 0.1) !important;
+	border-radius: 0 !important;
+
+	color: #ffffff !important;
+	font-family: "Inter", sans-serif !important;
+	font-size: 12px !important;
+	letter-spacing: 1px !important;
+
+	outline: none !important;
+	transition: border-color 0.3s ease, background 0.3s ease !important;
+}
+
+.shopify-buy__option-select__select:hover {
+	border-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+.shopify-buy__option-select__select:focus {
+	border-color: rgba(255, 255, 255, 0.34) !important;
+	background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.shopify-buy__option-select__select option,
+.product-card select option {
+	background: #050505 !important;
+	color: #ffffff !important;
+}
+
+/* Oculta el ícono SVG de flecha que añade Shopify (se usa el del navegador). */
+.shopify-buy__select-icon,
+.shopify-buy__option-select svg,
+.shopify-buy__option-select-wrapper svg {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+/* ===== BOTONES Y CANTIDAD ===== */
+
+.shopify-buy__btn-wrapper {
+	display: block !important;
+	width: 100% !important;
+	margin-top: 0 !important;
+	padding-top: 0 !important;
+}
+
+.shopify-buy__btn {
+	width: 100% !important;
+	min-height: 54px !important;
+	margin-top: 0 !important;
+	padding: 0 24px !important;
+
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+
+	background: rgba(255, 255, 255, 0.02) !important;
+	border: 1px solid rgba(255, 255, 255, 0.12) !important;
+	border-radius: 0 !important;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+
+	color: #ffffff !important;
+	font-family: "Inter", sans-serif !important;
+	font-size: 10px !important;
+	font-weight: 600 !important;
+	letter-spacing: 3px !important;
+	text-transform: uppercase !important;
+
+	transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease, transform 0.35s ease !important;
+}
+
+.shopify-buy__btn:hover {
+	background: #ffffff !important;
+	color: #000000 !important;
+	border-color: #ffffff !important;
+	transform: translateY(-2px);
+}
+
+.shopify-buy__quantity,
+.shopify-buy__quantity-input {
+	background: rgba(255, 255, 255, 0.02) !important;
+	border: 1px solid rgba(255, 255, 255, 0.12) !important;
+	border-radius: 0 !important;
+	color: #ffffff !important;
+	font-family: "Inter", sans-serif !important;
+	font-size: 12px !important;
+}
+
+.shopify-buy__quantity-input {
+	height: 54px !important;
+}
+
+/* ===== CARRITO LATERAL ===== */
+
+.shopify-buy-frame--cart {
+	z-index: 1001 !important;
+}
+
+.shopify-buy__cart {
+	background: rgba(5, 5, 5, 0.96) !important;
+	border-left: 1px solid rgba(255, 255, 255, 0.06);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+}
+
+.shopify-buy__cart-title {
+	font-family: "Inter", sans-serif !important;
+	font-size: 12px !important;
+	font-weight: 600 !important;
+	letter-spacing: 4px !important;
+	text-transform: uppercase !important;
+	color: #ffffff !important;
+}
+
+.shopify-buy__cart-item {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.shopify-buy__cart-toggle {
+	background: rgba(0, 0, 0, 0.78) !important;
+	border-left: 1px solid rgba(255, 255, 255, 0.08);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+}
+
+.shopify-buy__cart-toggle:hover {
+	background: #ffffff !important;
+}
+
+.shopify-buy__cart-toggle:hover .shopify-buy__cart-toggle__count {
+	color: #000000 !important;
+}
